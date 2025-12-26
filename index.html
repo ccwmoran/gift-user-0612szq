@@ -1,1120 +1,582 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=1">
-    <title>慕然科技工作室官网 | 创意编程与科技创新</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>你的2025年度报告</title>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng:wght@400&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="CCW共创世界编程社区慕然科技工作室（原科技创新），致力于开发Scratch作品和Scratch积木扩展的小型计算机、编程工作室。">
-    <meta name="keywords" content="慕然科技,慕然科技工作室,慕然科技官网,慕然科技工作室官网,共创世界慕然科技工作室,共创世界慕然科技官网,共创世界慕然科技工作室官网,共创世界编程社区,ccw,ccw共创世界,ccw慕然科技,ccw工作室,科技创新,科技创新工作室,科技创新官网,科技创新工作室官网,共创世界科技创新,共创世界科技创新工作室官网">
-    <meta name="author" content="慕然科技">
-    <meta name="robots" content="index, follow">
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #0c1a33 0%, #0a1428 50%, #0d1b36 100%);
+      color: white;
+      font-family: 'Arial', sans-serif;
+      overflow-x: hidden;
+      position: relative;
+    }
     
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="慕然科技工作室官网">
-    <meta property="og:description" content="CCW共创世界编程社区慕然科技工作室（原科技创新），致力于开发Scratch作品和Scratch积木扩展的小型计算机、编程工作室。">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ccwmoran.github.io">
-    <meta property="og:image" content="https://gpo.saobby.com/i/XlQ1PmuU5UPnej02.webp">
+    .background-decoration {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -1;
+    }
     
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="慕然科技工作室官网">
-    <meta name="twitter:description" content="CCW共创世界编程社区慕然科技工作室（原科技创新），致力于开发Scratch作品和Scratch积木扩展的小型计算机、编程工作室。">
-    <meta name="twitter:image" content="https://gpo.saobby.com/i/XlQ1PmuU5UPnej02.webp">
+    .decoration-circle {
+      position: absolute;
+      border-radius: 50%;
+      background: linear-gradient(45deg, rgba(56, 189, 248, 0.1), rgba(99, 102, 241, 0.1));
+      animation: float 15s infinite ease-in-out;
+    }
     
-    <link rel="icon" href="https://gpo.saobby.com/i/XlQ1PmuU5UPnej02.webp" type="image/webp">
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.1); }
+    }
     
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-        body {
-            min-height: 100vh;
-            background: linear-gradient(135deg, #ffffff 0%, #ffffff 30%, #a5d296 70%, #5ac05c 100%);
-            background-size: 400% 400%;
-            animation: gradientMove 15s ease infinite;
-            color: #252525;
-            overflow-x: hidden;
-            transition: background-color 0.3s;
-        }
-        @keyframes gradientMove {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
-        }
-        .page {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.3s, transform 0.3s;
-        }
-        .page.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .sticky-nav {
-            position: sticky;
-            top: 16px;
-            z-index: 50;
-            margin: 0 auto;
-            max-width: 1280px;
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            background-color: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-        .sticky-nav.scrolled {
-            background-color: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-        }
-        .nav-container {
-            padding: 0 16px;
-        }
-        .nav-content {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 56px;
-        }
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        .logo-icon {
-            background-color: rgba(165, 210, 150, 0.1);
-            padding: 8px;
-            border-radius: 12px;
-            margin-right: 8px;
-        }
-        .logo-icon img {
-            height: 24px;
-            width: auto;
-        }
-        .logo-text {
-            font-weight: 600;
-            font-size: 1.25rem;
-            color: #252525;
-            letter-spacing: -0.025em;
-        }
-        .nav-links {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .nav-item {
-            padding: 8px 12px;
-            border-radius: 12px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #252525;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-        .nav-item.active {
-            background-color: #a5d296;
-            color: #252525;
-            font-weight: 600;
-            border: 1px solid #5ca05c;
-        }
-        .nav-item:hover:not(.active) {
-            background-color: rgba(255, 255, 255, 0.3);
-        }
-        .nav-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .main-content {
-            padding-top: 72px;
-        }
-        .home-page {
-            min-height: 100vh;
-            padding-top: 72px;
-        }
-        .home-content {
-            text-align: center;
-            margin-top: 32px;
-            margin-bottom: 24px;
-        }
-        .home-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #252525;
-            margin-bottom: 8px;
-            line-height: 1.2;
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
-        }
-        .home-subtitle {
-            font-size: 1.5rem;
-            color: #5ac05c;
-            font-weight: 500;
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
-        }
-        .announcements-container {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 16px;
-            margin-bottom: 48px;
-        }
-        @media (max-width: 768px) {
-            .announcements-container {
-                flex-direction: column;
-            }
-        }
-        .announcement-card, .activity-card {
-            flex: 1;
-            min-width: 300px;
-            background-color: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-        .announcement-title, .activity-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #252525;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-        }
-        .announcement-title::before, .activity-title::before {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background-color: #a5d296;
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-        .announcement-content, .activity-content {
-            color: #666;
-            line-height: 1.6;
-            white-space: pre-wrap;
-            word-break: break-word;
-            text-align: center;
-        }
-        .announcement-content p, .activity-content p {
-            margin-bottom: 16px;
-        }
-        .announcement-content p:last-child, .activity-content p:last-child {
-            margin-bottom: 0;
-        }
-        .section-title {
-            font-size: 1.875rem;
-            font-weight: 700;
-            text-align: center;
-            color: #252525;
-            margin-bottom: 48px;
-            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
-        }
-        .works-page, .contact-page, .collaboration-page, .service-page {
-            padding-top: 72px;
-            padding-bottom: 48px;
-        }
-        .cards-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 16px;
-        }
-        .cards-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 32px;
-        }
-        .service-page .cards-grid {
-            grid-template-columns: 1fr;
-        }
-        .card {
-            background-color: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            transition: transform 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-4px);
-        }
-        .card-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-        .card-icon {
-            background-color: rgba(165, 210, 150, 0.1);
-            padding: 8px;
-            border-radius: 12px;
-            margin-right: 12px;
-        }
-        .card-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #a5d296;
-            border-radius: 50%;
-        }
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #252525;
-        }
-        .card-list {
-            list-style: none;
-        }
-        .card-list-item {
-            display: flex;
-            align-items: center;
-            padding-left: 8px;
-            border-left: 2px solid rgba(165, 210, 150, 0.3);
-            transition: all 0.2s;
-            padding-top: 4px;
-            padding-bottom: 4px;
-        }
-        .card-list-item:hover {
-            background-color: rgba(165, 210, 150, 0.05);
-        }
-        .card-list-bullet {
-            width: 8px;
-            height: 8px;
-            background-color: #a5d296;
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-        .card-note {
-            font-size: 0.875rem;
-            color: #666;
-            font-style: italic;
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid rgba(225, 225, 225, 0.5);
-        }
-        .contact-cards {
-            max-width: 768px;
-            margin: 0 auto;
-        }
-        .single-card {
-            max-width: 768px;
-            margin: 0 auto 24px;
-        }
-        .contact-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: #252525;
-            margin-bottom: 8px;
-        }
-        .contact-detail {
-            color: #666;
-        }
-        footer {
-            background-color: rgba(245, 245, 245, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-top: 1px solid rgba(255, 255, 255, 0.7);
-            padding: 24px 0;
-            margin-top: 32px;
-        }
-        .footer-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 16px;
-            text-align: center;
-            color: #666;
-            font-size: 0.875rem;
-        }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin-top: 16px;
-            flex-wrap: wrap;
-        }
-        .footer-link {
-            color: #666;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .footer-link:hover {
-            color: #252525;
-        }
-        .version-log {
-            color: #a5d296;
-            cursor: pointer;
-            text-decoration: underline;
-            display: inline-block;
-            margin-top: 8px;
-        }
-        .version-log:hover {
-            color: #8bc34a;
-        }
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        .modal-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .modal {
-            background-color: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 16px;
-            width: 90%;
-            max-width: 400px;
-            padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-        .modal.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        .modal-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #252525;
-            margin-bottom: 16px;
-            text-align: center;
-        }
-        .modal-content {
-            color: #666;
-            line-height: 1.6;
-        }
-        .modal-close {
-            position: absolute;
-            top: 16px;
-            right: 16px;
-            width: 24px;
-            height: 24px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: #666;
-            transition: all 0.2s;
-        }
-        .modal-close:hover {
-            color: #252525;
-            transform: rotate(90deg);
-        }
-        .service-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 16px;
-        }
-        .service-card {
-            background-color: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 16px;
-            padding: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.7);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-        .service-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #252525;
-            margin-bottom: 24px;
-            text-align: center;
-        }
-        .textarea-container {
-            position: relative;
-            margin-bottom: 20px;
-        }
-        .service-textarea {
-            width: 100%;
-            min-height: 120px;
-            padding: 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(200, 200, 200, 0.5);
-            background-color: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            font-size: 1rem;
-            resize: vertical;
-        }
-        .service-buttons {
-            display: flex;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-        .service-btn {
-            flex: 1;
-            padding: 12px;
-            border-radius: 12px;
-            border: none;
-            background-color: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .service-btn:hover {
-            background-color: rgba(255, 255, 255, 0.7);
-        }
-        .encode-btn {
-            color: #252525;
-            border: 1px solid rgba(200, 200, 200, 0.5);
-        }
-        .decode-btn {
-            color: #252525;
-            border: 1px solid rgba(200, 200, 200, 0.5);
-        }
-        .result-container {
-            position: relative;
-        }
-        .copy-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            padding: 6px 12px;
-            border-radius: 8px;
-            border: none;
-            background-color: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            font-size: 0.875rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .copy-btn:hover {
-            background-color: rgba(255, 255, 255, 0.7);
-        }
-        .result-text {
-            width: 100%;
-            min-height: 120px;
-            padding: 12px;
-            border-radius: 12px;
-            border: 1px solid rgba(200, 200, 200, 0.5);
-            background-color: rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            font-size: 1rem;
-            resize: none;
-        }
-        .copy-notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #a5d296;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 12px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 1000;
-        }
-        .copy-notification.show {
-            opacity: 1;
-        }
-        
-        /* 动态渐变背景的额外样式 */
-        .dynamic-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.8;
-        }
-        
-        .gradient-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.5;
-        }
-        
-        .blob-1 {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, #a5d296 0%, #5ac05c 100%);
-            top: 10%;
-            left: 10%;
-            animation: float 25s ease-in-out infinite;
-        }
-        
-        .blob-2 {
-            width: 250px;
-            height: 250px;
-            background: linear-gradient(135deg, #5ac05c 0%, #ffffff 100%);
-            top: 60%;
-            right: 15%;
-            animation: float 30s ease-in-out infinite reverse;
-        }
-        
-        .blob-3 {
-            width: 200px;
-            height: 200px;
-            background: linear-gradient(135deg, #ffffff 0%, #a5d296 100%);
-            bottom: 20%;
-            left: 20%;
-            animation: float 35s ease-in-out infinite;
-        }
-        
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            25% {
-                transform: translate(30px, 50px) scale(1.1);
-            }
-            50% {
-                transform: translate(-20px, 30px) scale(0.9);
-            }
-            75% {
-                transform: translate(40px, -20px) scale(1.05);
-            }
-        }
-    </style>
+    .slide-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      padding: 2rem;
+      transition: opacity 0.5s ease;
+    }
+    
+    .slide {
+      text-align: center;
+      max-width: 1200px;
+      width: 100%;
+      padding: 2rem;
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    .cover-title {
+      font-size: 3.5rem;
+      font-weight: bold;
+      margin-bottom: 3rem;
+      color: #6366f1;
+      text-shadow: 0 2px 10px rgba(99, 102, 241, 0.3);
+    }
+    
+    @media (min-width: 768px) {
+      .cover-title {
+        font-size: 5rem;
+      }
+    }
+    
+    .btn {
+      background: white;
+      color: #1e293b;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+      border-radius: 9999px;
+      cursor: pointer;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
+    }
+    
+    .btn:active {
+      transform: scale(0.95);
+    }
+    
+    .time-label {
+      font-size: 2.5rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    
+    @media (min-width: 768px) {
+      .time-label {
+        font-size: 3rem;
+      }
+    }
+    
+    .time-value-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    
+    @media (min-width: 768px) {
+      .time-value-container {
+        flex-direction: row;
+      }
+    }
+    
+    .time-value {
+      font-size: 5rem;
+      font-weight: bold;
+      color: #fbbf24;
+      text-shadow: 0 0 15px rgba(251, 191, 36, 0.5);
+    }
+    
+    @media (min-width: 768px) {
+      .time-value {
+        font-size: 6rem;
+      }
+    }
+    
+    .time-unit {
+      font-size: 2.5rem;
+      margin-top: 0.5rem;
+    }
+    
+    @media (min-width: 768px) {
+      .time-unit {
+        font-size: 3rem;
+        margin-top: 0;
+      }
+    }
+    
+    .quote {
+      font-family: 'Ma Shan Zheng', cursive;
+      font-size: 1.75rem;
+      line-height: 1.5;
+      max-width: 600px;
+      margin: 0 auto;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      letter-spacing: 0.05em;
+    }
+    
+    @media (min-width: 768px) {
+      .quote {
+        font-size: 2.25rem;
+      }
+    }
+    
+    .pagination {
+      position: absolute;
+      bottom: 2rem;
+      width: 100%;
+      max-width: 1200px;
+      padding: 0 2rem;
+      display: none;
+    }
+    
+    .progress-bar {
+      height: 0.375rem;
+      background-color: rgba(30, 58, 138, 0.3);
+      border-radius: 9999px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+    
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(to right, #38bdf8, #8b5cf6);
+      border-radius: 9999px;
+      width: 0%;
+      transition: width 0.5s ease;
+    }
+    
+    .pagination-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .nav-btn {
+      display: flex;
+      align-items: center;
+      background: rgba(30, 58, 138, 0.3);
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-btn:hover {
+      background: rgba(30, 58, 138, 0.5);
+      transform: scale(1.05);
+    }
+    
+    .nav-btn:active {
+      transform: scale(0.95);
+    }
+    
+    .nav-btn:disabled {
+      opacity: 0;
+      cursor: default;
+      transform: none;
+    }
+    
+    .icon {
+      width: 1.25rem;
+      height: 1.25rem;
+      margin: 0 0.5rem;
+    }
+    
+    .celebration-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    
+    .confetti {
+      position: absolute;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: confetti-fall 5s linear forwards;
+    }
+    
+    @keyframes confetti-fall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+    
+    .celebration-text {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 1.5rem;
+    }
+    
+    @media (min-width: 768px) {
+      .celebration-text {
+        font-size: 3.5rem;
+      }
+    }
+    
+    .new-year-text {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #fbbf24;
+      margin-top: 1rem;
+    }
+    
+    @media (min-width: 768px) {
+      .new-year-text {
+        font-size: 2.75rem;
+      }
+    }
+    
+    .final-title {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: #6366f1;
+      margin-bottom: 2rem;
+    }
+    
+    @media (min-width: 768px) {
+      .final-title {
+        font-size: 3.5rem;
+      }
+    }
+    
+    .tech-support {
+      font-size: 1rem;
+      color: rgba(148, 163, 184, 0.8);
+      margin-top: 4rem;
+    }
+    
+    @media (min-width: 768px) {
+      .tech-support {
+        font-size: 1.25rem;
+      }
+    }
+    
+    .fade-in {
+      animation: fadeIn 0.5s ease forwards;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .fade-out {
+      animation: fadeOut 0.5s ease forwards;
+    }
+    
+    @keyframes fadeOut {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(-20px); }
+    }
+  </style>
 </head>
-
 <body>
-    <!-- 动态渐变背景 -->
-    <div class="dynamic-background">
-        <div class="gradient-blob blob-1"></div>
-        <div class="gradient-blob blob-2"></div>
-        <div class="gradient-blob blob-3"></div>
+  <div class="background-decoration" id="backgroundDecoration"></div>
+  
+  <div class="slide-container">
+    <!-- Slide 0: Cover -->
+    <div class="slide active" id="slide-0">
+      <h1 class="cover-title fade-in">你的2025专属年度报告</h1>
+      <button class="btn fade-in" id="startBtn">去看看&gt;</button>
     </div>
     
-    <nav class="sticky-nav">
-        <div class="nav-container">
-            <div class="nav-content">
-                <div class="logo">
-                    <div class="logo-icon">
-                        <img src="https://gpo.saobby.com/i/XlQ1PmuU5UPnej02.webp" alt="慕然科技Logo">
-                    </div>
-                    <span class="logo-text">慕然科技</span>
-                </div>
-                <div class="nav-links">
-                    <div class="nav-item active" data-page="home">首页</div>
-                    <div class="nav-item" data-page="works">精选</div>
-                    <div class="nav-item" data-page="service">工具</div>
-                    <div class="nav-item" data-page="contact">联系方式</div>
-                    <div class="nav-item" data-page="collaboration">合作</div>
-                    <div class="nav-item" data-page="about">关于</div>
-                </div>
-                <div class="nav-actions">
-                    <button class="mobile-menu-btn">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
-                    <div id="randomEmoji" style="font-size: 1.5rem; margin-left: 8px; display: inline-block;">😍</div>
-                </div>
-            </div>
-        </div>
-    </nav>
-    
-    <main class="main-content">
-        <div id="home" class="page home-page active">
-            <div class="home-content">
-                <h1 class="home-title">欢迎来到慕然科技工作室的官网</h1>
-                <p class="home-subtitle">一起科技创新吧！</p>
-            </div>
-            <div class="announcements-container">
-                <div class="announcement-card">
-                    <h3 class="announcement-title">官方公告</h3>
-                    <div class="announcement-content">
-                        <p>慕然科技坚决反对一切违规扩展、作品、开发者。坚决反对一切通过违规手段偷币、偷关注、偷点赞、偷收藏等违规行为。</p>
-                    </div>
-                </div>
-                <div class="activity-card">
-                    <h3 class="activity-title">活动通知</h3>
-                    <div class="activity-content">
-                        <p>暂无活动</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="works" class="page works-page" style="display: none;">
-            <div class="cards-container">
-                <h2 class="section-title">慕然科技的精选作品</h2>
-                <div class="cards-grid">
-                    <!-- Scratch 作品 -->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-icon">
-                                <div class="card-dot"></div>
-                            </div>
-                            <h3 class="card-title">Scratch作品</h3>
-                        </div>
-                        <ul class="card-list">
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                缤纷绘画
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                Copilot 模拟
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                共创 AI
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                Windows 模拟
-                            </li>
-                        </ul>
-                        <p class="card-note">请前往共创世界慕然科技的主页试玩作品</p>
-                    </div>
-                    
-                    <!-- 文章 -->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-icon">
-                                <div class="card-dot"></div>
-                            </div>
-                            <h3 class="card-title">文章</h3>
-                        </div>
-                        <ul class="card-list">
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                没用的教程
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                无聊的科普
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                小众的神应用分享
-                            </li>
-                        </ul>
-                        <p class="card-note">请前往共创世界Morgan的主页"文章"页面浏览</p>
-                    </div>
-                    
-                    <!-- 积木扩展 -->
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-icon">
-                                <div class="card-dot"></div>
-                            </div>
-                            <h3 class="card-title">积木扩展</h3>
-                        </div>
-                        <ul class="card-list">
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                各种交互弹窗
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                安全保护组件
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                在线播放音乐
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                文件下载
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                网页跳转
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                发送系统消息
-                            </li>
-                            <li class="card-list-item">
-                                <span class="card-list-bullet"></span>
-                                Morgan的工具箱
-                            </li>
-                        </ul>
-                        <p class="card-note">请在共创世界素材集市搜索"慕然科技"或"Morgan"</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="contact" class="page contact-page" style="display: none;">
-            <div class="cards-container">
-                <h2 class="section-title">联系我们</h2>
-                <div class="contact-cards">
-                    <div class="card single-card">
-                        <h3 class="contact-title">官方 QQ 群</h3>
-                        <p class="contact-detail">群号：1004706370</p>
-                    </div>
-                    <div class="card single-card">
-                        <h3 class="contact-title">官方客服</h3>
-                        <p class="contact-detail">暂无</p>
-                    </div>
-                    <div class="card single-card">
-                        <h3 class="contact-title">GitHub 账号</h3>
-                        <p class="contact-detail">账号名称：ccwmoran</p>
-                    </div>
-                    <div class="card single-card">
-                        <h3 class="contact-title">邮箱地址</h3>
-                        <p class="contact-detail">暂无</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="collaboration" class="page collaboration-page" style="display: none;">
-            <div class="cards-container">
-                <h2 class="section-title">合作项目</h2>
-                <div class="contact-cards">
-                    <div class="card single-card">
-                        <h3 class="contact-title">与慕然科技的合作</h3>
-                        <p class="contact-detail">请把你的想法发给官方客服，并请标注"合作"</p>
-                    </div>
-                    <div class="card single-card">
-                        <h3 class="contact-title">慕然科技工作室招室员啦！</h3>
-                        <p class="contact-detail">请加入慕然科技官方1群，并联系群主（群号见联系方式）</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="service" class="page service-page" style="display: none;">
-            <div class="cards-container">
-                <h2 class="section-title">实用工具</h2>
-                <div class="cards-grid">
-                    <div class="card">
-                        <div class="service-card">
-                            <h2 class="service-title">Base64 编码与解码</h2>
-                            <div class="textarea-container">
-                                <textarea class="service-textarea" id="inputText" placeholder="请输入需要编码或解码的内容..."></textarea>
-                            </div>
-                            <div class="service-buttons">
-                                <button class="service-btn encode-btn" id="encodeBtn">编码为 Base64</button>
-                                <button class="service-btn decode-btn" id="decodeBtn">解码 Base64</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-icon">
-                                <div class="card-dot"></div>
-                            </div>
-                            <h3 class="card-title">慕然科技的Scratch积木扩展开发教程</h3>
-                        </div>
-                        <p class="card-note">教你如何开发自己的Scratch积木扩展</p>
-                        <a href="https://kejicx.github.io/teach/" target="_blank" class="service-btn encode-btn external-link" style="display: block; text-align: center; margin-top: 16px;">前往教程</a>
-                    </div>
-                    
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-icon">
-                                <div class="card-dot"></div>
-                            </div>
-                            <h3 class="card-title">慕然科技官方文库</h3>
-                        </div>
-                        <p class="card-note">官方文档和资源库</p>
-                        <a href="https://kejicx.github.io/doc/" target="_blank" class="service-btn encode-btn external-link" style="display: block; text-align: center; margin-top: 16px;">访问文库</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <div id="about" class="page about-page" style="display: none;">
-            <div class="cards-container">
-                <h2 class="section-title">关于</h2>
-                <div class="contact-cards">
-                    <div class="card single-card">
-                        <h3 class="contact-title">关于慕然科技</h3>
-                        <p class="contact-detail">创建时间：2023.5.4</p>
-                        <p class="contact-detail">室长：Morgan</p>
-                        <p class="contact-detail">室员：象棋脑</p>
-                    </div>
-                    <div class="card single-card">
-                        <h3 class="contact-title">关于Morgan</h3>
-                        <p class="contact-detail">住址：浙江杭州</p>
-                        <p class="contact-detail">星座：巨蟹座</p>
-                        <p class="contact-detail">爱好：编程、数码、设计等</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-    
-    <footer>
-        <div class="footer-content">
-            <p>© 2025 慕然科技官网. 保留所有权利.</p>
-            <div class="footer-links">
-                <a href="https://ccw.site/s/233J3" target="_blank" class="footer-link external-link">慕然科技的主页↗</a>
-                <a href="https://ccw.site/s/bL4gnr" target="_blank" class="footer-link external-link">Morgan的主页（404社区）↗</a>
-            </div>
-            <div class="counter">该网页已被访问 
-                <img src="https://w.saobby.com/w/cbudl97s"> 次（从2025年10月12日起开始计算）</div>
-            <div class="version-log" id="versionLog">版本更新日志</div>
-        </div>
-    </footer>
-    
-    <!-- 液态玻璃弹窗 -->
-    <div class="modal-overlay" id="versionModal">
-        <div class="modal">
-            <div class="modal-close" id="modalClose">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
-                </svg>
-            </div>
-            <h3 class="modal-title">版本更新日志</h3>
-            <div class="modal-content">
-                <p>版本号：5.0</p>
-                <p>更新内容：修复了已知问题，优化了部分细节。</p>
-            </div>
-        </div>
+    <!-- Slides 1-7: Time calculations -->
+    <div class="slide hidden" id="slide-1">
+      <div class="time-label fade-in">2025年你又帅了</div>
+      <div class="time-value-container fade-in">
+        <span class="time-value">12</span>
+        <span class="time-unit">月</span>
+      </div>
+      <p class="quote fade-in">星辰不会因为云层而停止闪耀，你也不会因为挫折而失去光芒。</p>
     </div>
     
-    <!-- 跳转确认弹窗 -->
-    <div class="modal-overlay" id="redirectModal">
-        <div class="modal">
-            <div class="modal-close" id="redirectModalClose">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"></path>
-                </svg>
-            </div>
-            <h3 class="modal-title">跳转确认</h3>
-            <div class="modal-content">
-                <p>即将跳转至：
-                    <span id="redirectTarget"></span></p>
-            </div>
-            <div class="service-buttons" style="margin-top: 24px;">
-                <button class="service-btn encode-btn" id="redirectConfirm">跳转</button>
-                <button class="service-btn decode-btn" id="redirectCancel">取消</button>
-            </div>
-        </div>
+    <div class="slide hidden" id="slide-2">
+      <div class="time-label fade-in">2025年你又帅了</div>
+      <div class="time-value-container fade-in">
+        <span class="time-value">52.14</span>
+        <span class="time-unit">周</span>
+      </div>
+      <p class="quote fade-in">溪流从不羡慕大海的辽阔，它只专注于穿越自己的山谷。</p>
     </div>
     
-    <div class="copy-notification" id="copyNotification">已复制到剪贴板</div>
+    <div class="slide hidden" id="slide-3">
+      <div class="time-label fade-in">2025年你又帅了</div>
+      <div class="time-value-container fade-in">
+        <span class="time-value">365</span>
+        <span class="time-unit">天</span>
+      </div>
+      <p class="quote fade-in">风筝逆风而上，人生亦是如此——压力是飞翔的伙伴。</p>
+    </div>
     
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // 页面切换
-            const navItems = document.querySelectorAll('.nav-item');
-            const pages = document.querySelectorAll('.page');
-            navItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    // 更新导航激活状态
-                    navItems.forEach(i => i.classList.remove('active'));
-                    this.classList.add('active');
-                    // 隐藏所有页面
-                    pages.forEach(page => {
-                        page.style.display = 'none';
-                        page.classList.remove('active');
-                    });
-                    // 显示选中的页面
-                    const pageId = this.getAttribute('data-page');
-                    const targetPage = document.getElementById(pageId);
-                    targetPage.style.display = 'block';
-                    // 添加过渡效果
-                    setTimeout(() => {
-                        targetPage.classList.add('active');
-                    }, 10);
-                });
-            });
-            // 悬浮导航栏效果
-            const nav = document.querySelector('.sticky-nav');
-            let lastScrollTop = 0;
-            window.addEventListener('scroll', function() {
-                let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                if (scrollTop > 20) {
-                    nav.classList.add('scrolled');
-                } else {
-                    nav.classList.remove('scrolled');
-                }
-                lastScrollTop = scrollTop;
-            });
-            // 版本更新日志弹窗
-            const versionLog = document.getElementById('versionLog');
-            const versionModal = document.getElementById('versionModal');
-            const modalClose = document.getElementById('modalClose');
-            versionLog.addEventListener('click', function() {
-                versionModal.classList.add('active');
-                setTimeout(() => {
-                    versionModal.querySelector('.modal').classList.add('active');
-                }, 10);
-            });
-            function closeModal() {
-                versionModal.querySelector('.modal').classList.remove('active');
-                setTimeout(() => {
-                    versionModal.classList.remove('active');
-                }, 300);
-            }
-            modalClose.addEventListener('click', closeModal);
-            versionModal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeModal();
-                }
-            });
-            // 跳转确认弹窗
-            const redirectModal = document.getElementById('redirectModal');
-            const redirectModalClose = document.getElementById('redirectModalClose');
-            const redirectTarget = document.getElementById('redirectTarget');
-            const redirectConfirm = document.getElementById('redirectConfirm');
-            const redirectCancel = document.getElementById('redirectCancel');
-            let pendingRedirectUrl = null;
-            function closeRedirectModal() {
-                redirectModal.querySelector('.modal').classList.remove('active');
-                setTimeout(() => {
-                    redirectModal.classList.remove('active');
-                }, 300);
-                pendingRedirectUrl = null;
-            }
-            redirectModalClose.addEventListener('click', closeRedirectModal);
-            redirectCancel.addEventListener('click', closeRedirectModal);
-            redirectConfirm.addEventListener('click', function() {
-                if (pendingRedirectUrl) {
-                    window.location.href = pendingRedirectUrl;
-                }
-                closeRedirectModal();
-            });
-            redirectModal.addEventListener('click', function(e) {
-                if (e.target === this) {
-                    closeRedirectModal();
-                }
-            });
-            // 为所有外部链接添加跳转确认
-            const externalLinks = document.querySelectorAll('.external-link');
-            externalLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // 获取链接文本（去掉箭头符号）
-                    let linkText = this.textContent.replace('↗', '').trim();
-                    if (linkText === '') {
-                        // 如果是导航栏中的链接，使用href属性
-                        linkText = this.href;
-                    }
-                    redirectTarget.textContent = linkText;
-                    pendingRedirectUrl = this.href;
-                    redirectModal.classList.add('active');
-                    setTimeout(() => {
-                        redirectModal.querySelector('.modal').classList.add('active');
-                    }, 10);
-                });
-            });
-            // Base64 服务功能
-            const inputText = document.getElementById('inputText');
-            const resultText = document.getElementById('resultText');
-            const encodeBtn = document.getElementById('encodeBtn');
-            const decodeBtn = document.getElementById('decodeBtn');
-            const copyBtn = document.getElementById('copyBtn');
-            const copyNotification = document.getElementById('copyNotification');
-            // 编码功能
-            encodeBtn.addEventListener('click', function() {
-                const text = inputText.value;
-                if (text) {
-                    try {
-                        const encoded = btoa(unescape(encodeURIComponent(text)));
-                        alert("编码结果已复制到剪贴板: " + encoded);
-                        navigator.clipboard.writeText(encoded);
-                    } catch (e) {
-                        alert('编码失败：无效字符');
-                    }
-                }
-            });
-            // 解码功能
-            decodeBtn.addEventListener('click', function() {
-                const text = inputText.value;
-                if (text) {
-                    try {
-                        const decoded = decodeURIComponent(escape(atob(text)));
-                        alert("解码结果已复制到剪贴板: " + decoded);
-                        navigator.clipboard.writeText(decoded);
-                    } catch (e) {
-                        alert('解码失败：无效的Base64字符串');
-                    }
-                }
-            });
-            // 随机表情符号
-            const randomEmoji = document.getElementById('randomEmoji');
-            const welcomeEmojis = ['🤣', '😍', '🥰', '🥳', '🤩', '😎', '😋', '🙌', '🫶', '👍', '✌', '🤓', '🤟', '🤙', '🎊', '🎉', '🪄', '🎁', '🎈'];
-            const randomIndex = Math.floor(Math.random() * welcomeEmojis.length);
-            randomEmoji.textContent = welcomeEmojis[randomIndex];
-            randomEmoji.style.fontSize = '1.5rem';
-            randomEmoji.style.marginLeft = '8px';
-            randomEmoji.style.display = 'inline-block';
-            
-            // 动态生成随机渐变背景
-            function generateRandomGradient() {
-                const colors = ['#ffffff', '#a5d296', '#5ac05c'];
-                const gradientTypes = ['linear-gradient', 'radial-gradient'];
-                const gradientType = gradientTypes[Math.floor(Math.random() * gradientTypes.length)];
-                
-                let gradientString;
-                if (gradientType === 'linear-gradient') {
-                    const angle = Math.floor(Math.random() * 360);
-                    const color1 = colors[Math.floor(Math.random() * colors.length)];
-                    const color2 = colors[Math.floor(Math.random() * colors.length)];
-                    const color3 = colors[Math.floor(Math.random() * colors.length)];
-                    gradientString = `${gradientType}(${angle}deg, ${color1} 0%, ${color2} 50%, ${color3} 100%)`;
-                } else {
-                    const shape = Math.random() > 0.5 ? 'circle' : 'ellipse';
-                    const color1 = colors[Math.floor(Math.random() * colors.length)];
-                    const color2 = colors[Math.floor(Math.random() * colors.length)];
-                    gradientString = `${gradientType}(${shape} at ${Math.floor(Math.random() * 100)}% ${Math.floor(Math.random() * 100)}%, ${color1} 0%, ${color2} 100%)`;
-                }
-                
-                return gradientString;
-            }
-            
-            // 应用随机渐变背景
-            const dynamicBackground = document.querySelector('.dynamic-background');
-            if (dynamicBackground) {
-                // 随机调整渐变斑点的位置和大小
-                const blobs = document.querySelectorAll('.gradient-blob');
-                blobs.forEach(blob => {
-                    const size = Math.floor(Math.random() * 200) + 150;
-                    blob.style.width = `${size}px`;
-                    blob.style.height = `${size}px`;
-                    blob.style.top = `${Math.floor(Math.random() * 80)}%`;
-                    blob.style.left = `${Math.floor(Math.random() * 80)}%`;
-                    
-                    // 随机动画持续时间
-                    const duration = Math.floor(Math.random() * 20) + 20;
-                    blob.style.animationDuration = `${duration}s`;
-                });
-            }
-            
-            // 初始页面显示
-            setTimeout(() => {
-                document.querySelector('.page.active').classList.add('active');
-            }, 10);
-        });
-    </script>
+    <div class="slide hidden" id="slide-4">
+      <div class="time-label fade-in">2025年你又帅了</div>
+      <div class="time-value-container fade-in">
+        <span class="time-value">8,760</span>
+        <span class="time-unit">小时</span>
+      </div>
+      <p class="quote fade-in">种子破土前总在黑暗中积蓄力量，你的努力正在看不见的地方生长。</p>
+    </div>
+    
+    <div class="slide hidden" id="slide-5">
+      <div class="time-label fade-in">2025年你又帅了</div>
+      <div class="time-value-container fade-in">
+        <span class="time-value">525,600</span>
+        <span class="time-unit">分钟</span>
+      </div>
+      <p class="quote fade-in">萤火虫的光芒虽小，却能点亮整片夏夜，你的存在同样珍贵。</p>
+    </div>
+    
+    <div class="slide hidden" id="slide-6">
+      <div class="time-label fade-in">2025年你又帅了</div>
+      <div class="time-value-container fade-in">
+        <span class="time-value">31,536,000</span>
+        <span class="time-unit">秒</span>
+      </div>
+      <p class="quote fade-in">竹子用四年时间只长3厘米，第五年却每天30厘米——所有成长都有沉淀期。</p>
+    </div>
+    
+    <div class="slide hidden" id="slide-7">
+      <div class="time-label fade-in">2025年你又帅了</div>
+      <div class="time-value-container fade-in">
+        <span class="time-value">31,536,000,000</span>
+        <span class="time-unit">毫秒</span>
+      </div>
+      <p class="quote fade-in">露珠从不担心太阳升起，因为它知道自己的使命是滋润清晨。</p>
+    </div>
+    
+    <!-- Slide 8: New Year -->
+    <div class="slide hidden" id="slide-8">
+      <div class="celebration-bg" id="confettiContainer"></div>
+      <div class="celebration-text fade-in">2025完结撒花🎊，2026你好呀🎉<br>新的一年祝你更帅(˶╹ꇴ╹˶)🧨</div>
+      <div class="new-year-text fade-in">祝你新年快乐！</div>
+    </div>
+    
+    <!-- Slide 9: Final -->
+    <div class="slide hidden" id="slide-9">
+      <h1 class="final-title fade-in">by Morgan</h1>
+      <p class="tech-support fade-in">CCWMORAN慕然科技提供技术支持</p>
+    </div>
+  </div>
+  
+  <div class="pagination" id="pagination">
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="pagination-controls">
+      <button class="nav-btn" id="prevBtn">
+        <i data-lucide="chevron-left" class="icon"></i>
+        <span>上一页</span>
+      </button>
+      <button class="nav-btn" id="nextBtn">
+        <span>下一页</span>
+        <i data-lucide="chevron-right" class="icon"></i>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    // Create background decorations
+    const backgroundDecoration = document.getElementById('backgroundDecoration');
+    for (let i = 0; i < 15; i++) {
+      const circle = document.createElement('div');
+      circle.classList.add('decoration-circle');
+      circle.style.width = `${Math.random() * 150 + 50}px`;
+      circle.style.height = circle.style.width;
+      circle.style.top = `${Math.random() * 100}%`;
+      circle.style.left = `${Math.random() * 100}%`;
+      circle.style.animationDelay = `${Math.random() * 10}s`;
+      circle.style.opacity = `${Math.random() * 0.2 + 0.1}`;
+      backgroundDecoration.appendChild(circle);
+    }
+    
+    // Slide management
+    let currentSlide = 0;
+    const totalSlides = 9; // Updated total slides count
+    const slides = document.querySelectorAll('.slide');
+    const pagination = document.getElementById('pagination');
+    const progressFill = document.getElementById('progressFill');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const startBtn = document.getElementById('startBtn');
+    
+    // Show initial pagination state
+    updatePagination();
+    
+    // Start button handler
+    startBtn.addEventListener('click', () => {
+      goToSlide(1);
+    });
+    
+    // Navigation buttons
+    prevBtn.addEventListener('click', () => {
+      if (currentSlide > 0) {
+        goToSlide(currentSlide - 1);
+      }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      if (currentSlide < totalSlides) {
+        goToSlide(currentSlide + 1);
+      }
+    });
+    
+    // Go to specific slide
+    function goToSlide(slideIndex) {
+      // Add fade out animation to current slide
+      slides[currentSlide].classList.add('fade-out');
+      
+      // Hide current slide after animation
+      setTimeout(() => {
+        slides[currentSlide].classList.remove('active', 'fade-in', 'fade-out');
+        slides[currentSlide].classList.add('hidden');
+        
+        // Show new slide
+        currentSlide = slideIndex;
+        slides[currentSlide].classList.remove('hidden', 'fade-out');
+        slides[currentSlide].classList.add('active');
+        
+        // Add fade in animation
+        setTimeout(() => {
+          slides[currentSlide].classList.add('fade-in');
+        }, 10);
+        
+        // Update pagination
+        updatePagination();
+        
+        // Special handling for celebration slide
+        if (currentSlide === 8) {
+          createConfetti('confettiContainer', 50);
+        }
+      }, 500);
+    }
+    
+    // Update pagination UI
+    function updatePagination() {
+      // Show/hide pagination
+      pagination.style.display = currentSlide === 0 ? 'none' : 'block';
+      
+      // Update progress bar - adjusted for 9 total slides
+      const progress = (currentSlide / totalSlides) * 100;
+      progressFill.style.width = `${progress}%`;
+      
+      // Update button states
+      prevBtn.disabled = currentSlide === 0;
+      nextBtn.disabled = currentSlide === totalSlides;
+      
+      // Update button text
+      if (currentSlide === 0) {
+        nextBtn.innerHTML = '<span>去看看</span><i data-lucide="chevron-right" class="icon"></i>';
+      } else if (currentSlide === totalSlides) {
+        nextBtn.innerHTML = '<span>完成</span><i data-lucide="chevron-right" class="icon"></i>';
+      } else {
+        nextBtn.innerHTML = '<span>下一页</span><i data-lucide="chevron-right" class="icon"></i>';
+      }
+      
+      prevBtn.innerHTML = `<i data-lucide="chevron-left" class="icon"></i><span>${currentSlide === 0 ? '' : '上一页'}</span>`;
+      
+      // Re-render Lucide icons
+      lucide.createIcons();
+    }
+    
+    // Create confetti effect with circular shapes
+    function createConfetti(containerId, count) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+      
+      for (let i = 0; i < count; i++) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        
+        // Random position, size, color and delay
+        const leftPos = Math.random() * 100;
+        const size = Math.random() * 0.8 + 0.4;
+        const hue = Math.random() * 360;
+        const delay = Math.random() * 5;
+        
+        confetti.style.left = `${leftPos}%`;
+        confetti.style.width = `${size}rem`;
+        confetti.style.height = `${size}rem`;
+        confetti.style.backgroundColor = `hsl(${hue}, 70%, 60%)`;
+        confetti.style.animationDelay = `${delay}s`;
+        confetti.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        
+        container.appendChild(confetti);
+      }
+    }
+    
+    // Initialize with proper state
+    document.addEventListener('DOMContentLoaded', () => {
+      // Show pagination for slides after cover
+      if (currentSlide > 0) {
+        pagination.style.display = 'block';
+      }
+      
+      // Create initial confetti for celebration slide if needed
+      if (currentSlide === 8) {
+        createConfetti('confettiContainer', 50);
+      }
+    });
+  </script>
 </body>
 </html>
